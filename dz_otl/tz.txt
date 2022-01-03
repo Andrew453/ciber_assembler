@@ -1,0 +1,12 @@
+Что имеем 
+What do you want to do?(crypt,decrypt):decryptEnter the string that need to be encrypted (the string length is no more than 40 characters):sdsada                        Enter your key:dfdsf
+
+
+
+Что нужно получить:
+What do you want to do?(crypt,decrypt):
+decrypt
+Enter the string that need to be encrypted (the string length is no more than 40 characters):
+sdsada 
+Enter your key:
+dfdsf

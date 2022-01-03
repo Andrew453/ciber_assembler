@@ -1,0 +1,3 @@
+system begin com
+    format dos com
+end
