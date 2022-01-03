@@ -21,8 +21,47 @@ start:
     mov bp, 0xFFFF
     mov sp, 0xFFFF
     sti
+    
+    
     ; функция очистки и установки экрана(без аргументов)
     call _textmodeinit
+    ;пароль!
+    jmp passwordcheck
+passwordcheckerror: 
+    push errorpass
+    call _puts
+    add sp, 2
+    
+    push clrf
+    call _puts
+    add sp, 2    
+    
+passwordcheck:
+    push passtext
+    call _puts
+    add sp, 2
+    
+    push clrf
+    call _puts
+    add sp, 2
+    
+    push passstring
+    call _gets
+    push passstring 
+    call _puts
+    add sp,2
+    
+    push clrf
+    call _puts
+    add sp, 2
+    
+    push passstring
+    push pass
+    call _cmpstr
+    cmp ax,0x0001
+    jne passwordcheckerror
+    
+    
     ; вывод начального вопроса - что делать?
     push activity
     call _puts
@@ -148,16 +187,25 @@ entertext:
     db "Enter the string that needs to be encrypted (the string length is no more than   40 characters):", 0
 getkey:
     db "Enter your key:",0
+    
+passtext:
+    db "Enter password:",0
+errorpass:
+    db "Invalid password!",0
+    
+passstring;
+    db "          ", 0
+    
 crypt:
-    db "crypt     ",0
+    db "crypt     ", 0
 decrypt:
-    db "decrypt   ",0
+    db "decrypt   ", 0
 activity:
     db "What do you want to do? (crypt, decrypt):",0
 choice:
-    db "          ",0
+    db "          ", 0
 pass:
-    db "hui", 0
+    db "hui       ", 0
 cryptresult:
     db  "                                        ",0
     
@@ -173,7 +221,7 @@ text:
     db "                                        ", 0
 key:
     db "                                        ", 0    
-    
+
 _gets:
     push bp
     mov bp, sp
