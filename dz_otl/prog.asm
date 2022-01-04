@@ -27,6 +27,18 @@ start:
     call _textmodeinit
     call _paintimage
     
+    push ax
+    push cx
+    MOV AX,0xC6C0
+    MOV CX, 0x002D
+    PUSH AX
+    PUSH CX
+    CALL _sleep
+    pop cx
+    pop ax
+    
+    call _textmodeinit
+    
     push clrf
     call _puts
     add sp, 2 
@@ -223,6 +235,21 @@ ox:
 oy:
     db 0
     
+    
+_sleep:
+    PUSH BP
+    MOV BP,SP
+
+    mov cx, [BP + 4]
+    mov dx, [BP + 6]
+    mov ah, 86h
+    mov al, 0
+    int 15h
+
+    MOV SP,BP
+    POP BP
+    RET    
+    
 _gets:
     push bp
     mov bp, sp
@@ -370,56 +397,173 @@ return:
 _paintimage:   
     MOV  AL, 2
     MOV AH, 0 
-    INT 0x10
-    
-    gotoxy 5, 6
-    putchar  '*', 0x02
-    gotoxy 6, 6
-    putchar  '*', 0x02
-    gotoxy 5, 7
-    putchar  '*', 0x02
-    gotoxy 6, 7
-    putchar  '*', 0x02
-    
+    INT 0x10    
+gotoxy 0, 0
+putchar '1', 0x02
+gotoxy 1, 0
+putchar '1', 0x02
+gotoxy 2, 0
+putchar '0', 0x02
+gotoxy 3, 0
+putchar '1', 0x02
+gotoxy 4, 0
+putchar '0', 0x02
+gotoxy 5, 0
+putchar '0', 0x02
+gotoxy 6, 0
+putchar '0', 0x02
+gotoxy 7, 0
+putchar '1', 0x02
+gotoxy 8, 0
+putchar '1', 0x02
+gotoxy 9, 0
+putchar '0', 0x02
+gotoxy 10, 0
+putchar '0', 0x02
+gotoxy 11, 0
+putchar '0', 0x02
+gotoxy 12, 0
+putchar '1', 0x02
+gotoxy 13, 0
+putchar '1', 0x02
+gotoxy 14, 0
+putchar '1', 0x02
+gotoxy 15, 0
+putchar '1', 0x02 
+gotoxy 16, 0
+putchar '1', 0x02
+gotoxy 17, 0
+putchar '0', 0x02
+gotoxy 18, 0
+putchar '0', 0x02
+gotoxy 19, 0
+putchar '0', 0x02
+gotoxy 19, 0
+putchar '0', 0x02
+gotoxy 20, 0
+putchar '0', 0x02
+gotoxy 21, 0
+putchar '1', 0x02
+gotoxy 22, 0
+putchar '1', 0x02
+gotoxy 23, 0
+putchar '0', 0x02
+gotoxy 24, 0
+putchar '1', 0x02
+gotoxy 25, 0
+putchar '0', 0x02
+gotoxy 26, 0
+putchar '0', 0x02
+gotoxy 27, 0
+putchar '0', 0x02
+gotoxy 28, 0
+putchar '0', 0x02
+gotoxy 29, 0
+putchar '0', 0x02
+gotoxy 30, 0
+putchar '1', 0x02
+gotoxy 31, 0
+putchar '0', 0x02
+gotoxy 32, 0
+putchar '1', 0x02
+gotoxy 33, 0
+putchar '1', 0x02
+gotoxy 34, 0
+putchar '1', 0x02
+gotoxy 35, 0
+putchar '0', 0x02
+gotoxy 36, 0
+putchar '1', 0x02
+gotoxy 37, 0
+putchar '1', 0x02
+gotoxy 38, 0
+putchar '1', 0x02
+gotoxy 39, 0
+putchar '1', 0x02
+gotoxy 40, 0
+putchar '0', 0x02
+gotoxy 41, 0
+putchar '1', 0x02
+gotoxy 42, 0
+putchar '0', 0x02
+gotoxy 43, 0
+putchar '0', 0x02
+gotoxy 44, 0
+putchar '0', 0x02
+gotoxy 45, 0
+putchar '1', 0x02
+gotoxy 46, 0
+putchar '1', 0x02
+gotoxy 47, 0
+putchar '0', 0x02
+gotoxy 48, 0
+putchar '0', 0x02
+gotoxy 49, 0
+putchar '0', 0x02
+gotoxy 50, 0
+putchar '1', 0x02
+gotoxy 51, 0
+putchar '1', 0x02
+gotoxy 52, 0
+putchar '1', 0x02
+gotoxy 53, 0
+putchar '0', 0x02
+gotoxy 54, 0
+putchar '1', 0x02
+gotoxy 55, 0
+putchar '1', 0x02
+gotoxy 56, 0
+putchar '0', 0x02
+gotoxy 57, 0
+putchar '1', 0x02
+gotoxy 58, 0
+putchar '0', 0x02
+gotoxy 59, 0
+putchar '0', 0x02
+gotoxy 60, 0
+putchar '0', 0x02
+gotoxy 61, 0
+putchar '0', 0x02
+gotoxy 62, 0
+putchar '1', 0x02
+gotoxy 63, 0
+putchar '0', 0x02
+gotoxy 64, 0
+putchar '1', 0x02
+gotoxy 65, 0
+putchar '1', 0x02
+gotoxy 66, 0
+putchar '0', 0x02
+gotoxy 67, 0
+putchar '0', 0x02
+gotoxy 68, 0
+putchar '0', 0x02
+gotoxy 69, 0
+putchar '1', 0x02
+gotoxy 70, 0
+putchar '1', 0x02
+gotoxy 71, 0
+putchar '1', 0x02
+gotoxy 72, 0
+putchar '0', 0x02
+gotoxy 73, 0
+putchar '1', 0x02
+gotoxy 74, 0
+putchar '0', 0x02
+gotoxy 75, 0
+putchar '0', 0x02
+gotoxy 76, 0
+putchar '0', 0x02
+gotoxy 77, 0
+putchar '0', 0x02
+gotoxy 78, 0
+putchar '1', 0x02
+gotoxy 79, 0
+putchar '0', 0x02
+gotoxy 80, 0
+putchar '1', 0x02
 
 
-    gotoxy 9, 6
-    putchar  '*', 0x02
-    gotoxy 10, 6
-    putchar  '*', 0x02
-    gotoxy 9, 7
-    putchar  '*', 0x02
-    gotoxy 10, 7
-    putchar  '*', 0x02
-    
-    gotoxy 7, 8
-    putchar  '*', 0x02
-    gotoxy 8, 8
-    putchar  '*', 0x02
-    gotoxy 7, 9
-    putchar  '*', 0x02
-    gotoxy 8, 9
-    putchar  '*', 0x02
-    gotoxy 7, 10
-    putchar  '*', 0x02
-    gotoxy 8, 10
-    putchar  '*', 0x02
-   
-   
-    gotoxy 6, 9
-    putchar  '*', 0x02
-    gotoxy 6, 10
-    putchar  '*', 0x02
-    gotoxy 6, 11
-    putchar  '*', 0x02
-   
-    
-    gotoxy 9, 9
-    putchar  '*', 0x02
-    gotoxy 9, 10
-    putchar  '*', 0x02
-    gotoxy 9, 11
-    putchar  '*', 0x02
     
     
 section .DATA    
