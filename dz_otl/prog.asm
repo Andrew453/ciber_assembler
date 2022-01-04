@@ -25,6 +25,11 @@ start:
     
     ; функция очистки и установки экрана(без аргументов)
     call _textmodeinit
+    call _paintimage
+    
+    push clrf
+    call _puts
+    add sp, 2 
     ;пароль!
     jmp passwordcheck
 passwordcheckerror: 
@@ -145,7 +150,6 @@ decr:
     
     ;; шифрование
 
-;     xor ax,ax
     mov bx,0x28
     mov cx,0x28
     
@@ -158,13 +162,6 @@ decr:
     call _message_crypt
     add sp,10
     
-;     push clrf
-;     call _puts
-;     add sp, 2
-    ; вывод итогового расшифрованного/зашифрованного сообщения
-;     push clrf
-;     call _puts
-;     add sp, 2
     push clrf
     call _puts
     add sp, 2
@@ -221,12 +218,26 @@ text:
     db "                                        ", 0
 key:
     db "                                        ", 0    
-
+ox:
+    db 0
+oy:
+    db 0
+    
 _gets:
     push bp
     mov bp, sp
     mov bx, [bp+4];
-loop:
+;   
+;     push oy
+;     push ox
+;     call _getxy
+;     add sp,2
+;     mov cx,[ox]
+;     mov dx,[oy]
+;     inc dx
+;     
+loop:  
+    
     call _getchar
     
     cmp al,0x0D
@@ -235,8 +246,23 @@ loop:
     inc bx
     push ax
     call _putchar
+;     
+;     inc cx
+;     push dx
+;     push cx
+;     call _gotoxy
+;     add sp,2
+;     
     JNE loop
 exitgets:
+;   
+;     mov cx, 0
+;     mov dx, 0
+;     mov [ox], cx
+;     mov [oy], dx
+;     pop dx
+;     pop cx
+;   
     mov sp, bp
     pop bp
     ret
@@ -322,7 +348,78 @@ return:
     MOV AX, CX;
     MOV SP, BP
     POP BP;
-    RET;    
+    RET;  
+
+%macro gotoxy 2
+    MOV AH,0x02
+    MOV BH, 0
+    MOV DH, %2
+    MOV DL, %1
+    INT 0x10
+%endmacro
+    
+%macro putchar 2
+    MOV AH, 0x09
+    MOV AL, %1
+    MOV CX, 1
+    MOV BL, %2
+    MOV BH, 0 
+    INT 0x10
+%endmacro    
+    
+_paintimage:   
+    MOV  AL, 2
+    MOV AH, 0 
+    INT 0x10
+    
+    gotoxy 5, 6
+    putchar  '*', 0x02
+    gotoxy 6, 6
+    putchar  '*', 0x02
+    gotoxy 5, 7
+    putchar  '*', 0x02
+    gotoxy 6, 7
+    putchar  '*', 0x02
+    
+
+
+    gotoxy 9, 6
+    putchar  '*', 0x02
+    gotoxy 10, 6
+    putchar  '*', 0x02
+    gotoxy 9, 7
+    putchar  '*', 0x02
+    gotoxy 10, 7
+    putchar  '*', 0x02
+    
+    gotoxy 7, 8
+    putchar  '*', 0x02
+    gotoxy 8, 8
+    putchar  '*', 0x02
+    gotoxy 7, 9
+    putchar  '*', 0x02
+    gotoxy 8, 9
+    putchar  '*', 0x02
+    gotoxy 7, 10
+    putchar  '*', 0x02
+    gotoxy 8, 10
+    putchar  '*', 0x02
+   
+   
+    gotoxy 6, 9
+    putchar  '*', 0x02
+    gotoxy 6, 10
+    putchar  '*', 0x02
+    gotoxy 6, 11
+    putchar  '*', 0x02
+   
+    
+    gotoxy 9, 9
+    putchar  '*', 0x02
+    gotoxy 9, 10
+    putchar  '*', 0x02
+    gotoxy 9, 11
+    putchar  '*', 0x02
     
     
 section .DATA    
