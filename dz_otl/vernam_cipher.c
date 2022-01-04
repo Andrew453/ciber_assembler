@@ -1,64 +1,3 @@
-extern unsigned short _cdecl strlen(char* string) {
-    unsigned short ret = 0;
-    while (1) {
-        if (string[ret]==0) {
-            return ret;        
-        }
-        ret = ret + 1;
-    }
-}
-
-
-
-//Перемещает курсор в точку x y
-extern void _cdecl gotoxy(short x, short y) {
-
-    __asm {
-
-        push ax
-        push bx
-        push dx
-
-        mov ax, y
-        mov dh, al
-        mov ax, x
-        mov dl, al
-        mov ah, 2
-        mov al, 0
-        mov bx, 0
-        int 10h
-
-        pop dx
-        pop bx
-        pop ax
-
-    }
-}
-
-//Узнает текущее положение курсора
-extern void _cdecl getxy(short* x, short* y) {
-    short loc_temp;
-
-    __asm {
-        push ax
-        push bx
-        push cx
-        push dx
-        mov ah, 03H
-        mov bx, 0
-        int 10h
-        mov loc_temp, dx
-        pop dx
-        pop cx
-        pop bx
-        pop ax
-    }
-    *y = (loc_temp & 0xFF00) >> 8;
-    *x = (loc_temp & 0x00FF);
-}
-
-
-
 extern char _cdecl mem_cmp(char* str1, char* str2, short strSize)
 {
     char checker = 0x00;
@@ -81,15 +20,13 @@ extern void _cdecl mem_cpy(char* str1, char* str2, short strSize)
     return;
 }
 
-
-
 //TODO 0 в последний байт, либо в байт за последним?
 extern void _cdecl str_init(char* str1, short strSize)
 {
     str1[strSize - 1] = 0x00;
 }
 
-extern char str_cmp(char* str1, char* str2)
+extern char _cdecl str_cmp(char* str1, char* str2)
 {
     char checker = 0x00;
     char flag = 0x01;
@@ -128,14 +65,13 @@ extern void _cdecl message_crypt(char* in, short inSize, char* key, short keySiz
     {
         for (short i = 0; i < keySize; i++)
         {
-            out[j * keySize + i] = in[j * keySize + i] ^ key[i];
+            out[j * keySize + 1] = in[j * keySize + i] ^ key[i];
         }
     }
     for (short i = 0; i < remain; i++)
     {
         out[j * keySize + i] = in[j * keySize + i] ^ key[i];
     }
-    
     return;
 }
 
@@ -143,8 +79,8 @@ extern void _cdecl message_decrypt(char* in, short inSize, char* key, short keyS
 {
     message_crypt(in, inSize, key, keySize, out);
 }
-
-static const unsigned short crc16tab[256] =
+/*
+static const unsigned short crcTab[256] =
 {   0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7,
     0x8108, 0x9129, 0xa14a, 0xb16b, 0xc18c, 0xd1ad, 0xe1ce, 0xf1ef,
     0x1231, 0x0210, 0x3273, 0x2252, 0x52b5, 0x4294, 0x72f7, 0x62d6,
@@ -178,46 +114,31 @@ static const unsigned short crc16tab[256] =
     0xef1f, 0xff3e, 0xcf5d, 0xdf7c, 0xaf9b, 0xbfba, 0x8fd9, 0x9ff8,
     0x6e17, 0x7e36, 0x4e55, 0x5e74, 0x2e93, 0x3eb2, 0x0ed1, 0x1ef0 };
 
-extern unsigned short _cdecl crc16(const char* in, short inSize)
+extern unsigned short _cdecl crc(const char* in, short inSize)
 {
     unsigned short crc = 0;
     for (short i = 0; i < inSize; i++)
     {
-        crc = (crc << 8) ^ crc16tab[((crc >> 8) ^ *in++) & 0x00FF];
+        crc = (crc << 8) ^ crcTab[((crc >> 8) ^ *in++) & 0x00FF];
     }
     return crc;
 }
-/*
- * 0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7,
- * 0x8108, 0x9129, 0xa14a, 0xb16b, 0xc18c, 0xd1ad, 0xe1ce, 0xf1ef,
- */
+
+unsigned short checker = 0x8144;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+extern void _cdecl password_check(char* in, short inSize, char* in2)
+{   
+    puts(in);
+    unsigned short temp = crc(in, inSize);
+    if (checker == temp)
+    {
+        *in2 = 0x01;
+    }
+    else 
+    {
+        *in2 = 0x00;
+    }
+    puts(in2)
+}*/
