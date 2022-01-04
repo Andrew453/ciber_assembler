@@ -37,7 +37,7 @@ start:
     pop cx
     pop ax
     
-    call _textmodeinit
+;     call _textmodeinit
     
     push clrf
     call _puts
@@ -563,6 +563,316 @@ putchar '0', 0x02
 gotoxy 80, 0
 putchar '1', 0x02
 
+
+    gotoxy 9, 6
+    putchar '*', 0x02
+    gotoxy 10, 6
+    putchar '*', 0x02
+    gotoxy 11, 6
+    putchar '*', 0x02
+    gotoxy 12, 6
+    putchar '*', 0x02
+    gotoxy 13, 6
+    putchar '*', 0x02
+
+    gotoxy 7, 7
+    putchar '*', 0x02
+    gotoxy 8, 7
+    putchar '*', 0x02
+
+    gotoxy 9, 7
+    putchar '*', 0x02
+    gotoxy 10, 7
+    putchar '*', 0x02
+    gotoxy 11, 7
+    putchar '*', 0x02
+    gotoxy 12, 7
+    putchar '*',0x02
+    gotoxy 13, 7
+    putchar '*', 0x02
+
+    gotoxy 14, 7
+    putchar '*', 0x02
+    gotoxy 15, 7
+    putchar '*', 0x02
+
+    gotoxy 6, 8
+    putchar '*', 0x02
+
+    gotoxy 7, 8
+    putchar '*', 0x02
+    gotoxy 8, 8
+    putchar '*', 0x02
+    gotoxy 9, 8
+    putchar '*', 0x02
+    gotoxy 10, 8
+    putchar '*', 0x02
+    gotoxy 11, 8
+    putchar '*', 0x02
+    gotoxy 12, 8
+    putchar '*', 0x02
+    gotoxy 13, 8
+    putchar '*', 0x02
+    gotoxy 14, 8
+    putchar '*', 0x02
+    gotoxy 15, 8
+    putchar '*', 0x02
+
+    gotoxy 16, 8
+    putchar '*', 0x02
+
+    gotoxy 5, 9
+    putchar '*', 0x02
+
+    gotoxy 6, 9
+    putchar '*', 0x02
+    gotoxy 7, 9
+    putchar '*', 0x02
+    gotoxy 8, 9
+    putchar '*', 0x02
+    gotoxy 9, 9
+    putchar '*', 0x02
+    gotoxy 10, 9
+    putchar '*', 0x02
+    gotoxy 11, 9
+    putchar '*', 0x02
+    gotoxy 12, 9
+    putchar '*', 0x02
+    gotoxy 13, 9
+    putchar '*', 0x02
+    gotoxy 14, 9
+    putchar '*', 0x02
+    gotoxy 15, 9
+    putchar '*', 0x02
+    gotoxy 16, 9
+    putchar '*', 0x02
+
+    gotoxy 17, 9
+    putchar '*', 0x02
+
+    gotoxy 5, 10
+    putchar '*', 0x02
+
+    gotoxy 6, 10
+    putchar '*', 0x02
+    gotoxy 7, 10
+    putchar '*', 0x02
+    gotoxy 8, 10
+    putchar '*', 0x02
+    gotoxy 9, 10
+    putchar '*', 0x02
+    gotoxy 10, 10
+    putchar '*', 0x02
+    gotoxy 11, 10
+    putchar '*', 0x02
+    gotoxy 12, 10
+    putchar '*', 0x02
+    gotoxy 13, 10
+    putchar '*', 0x02
+    gotoxy 14, 10
+    putchar '*', 0x02
+    gotoxy 15, 10
+    putchar '*', 0x02
+    gotoxy 16, 10
+    putchar '*', 0x02
+
+    gotoxy 17, 10
+    putchar '*', 0x02
+
+    gotoxy 4, 11
+    putchar '*', 0x02
+
+    gotoxy 5, 11
+    putchar '*', 0x02
+    gotoxy 5, 11
+    putchar '*', 0x02
+    gotoxy 6, 11
+    putchar '*', 0x02
+
+    gotoxy 7, 11
+    putchar '*', 0x02
+    gotoxy 8, 11
+    putchar '*', 0x02
+
+    gotoxy 9, 11
+    putchar '*', 0x02
+    gotoxy 10, 11
+    putchar '*', 0x02
+
+    gotoxy 11, 11
+    putchar '*', 0x02
+    gotoxy 12, 11
+    putchar '*', 0x02
+
+    gotoxy 13, 11
+    putchar '*', 0x02
+    gotoxy 14, 11
+    putchar '*', 0x02
+    gotoxy 15, 11
+    putchar '*', 0x02
+    gotoxy 16, 11
+    putchar '*', 0x02
+    gotoxy 17, 11
+    putchar '*', 0x02
+
+    gotoxy 18, 11
+    putchar '*', 0x02
+
+    gotoxy 4, 12
+    putchar '*', 0x02
+
+    gotoxy 5, 12
+    putchar '*', 0x02
+
+    gotoxy 6, 12
+    putchar '*', 0x02
+    gotoxy 7, 12
+    putchar '*', 0x02
+    gotoxy 8, 12
+    putchar '*', 0x02
+
+    gotoxy 9, 12
+    putchar '*', 0x02
+    gotoxy 10, 12
+    putchar '*', 0x02
+
+    gotoxy 11, 12
+    putchar '*', 0x02
+    gotoxy 12, 12
+    putchar '*', 0x02
+    gotoxy 13, 12
+    putchar '*', 0x02
+
+    gotoxy 14, 12
+    putchar '*', 0x02
+    gotoxy 15, 12
+    putchar '*', 0x02
+    gotoxy 16, 12
+    putchar '*', 0x02
+    gotoxy 17, 12
+    putchar '*', 0x02
+    gotoxy 4, 12
+    putchar '*', 0x02
+
+    gotoxy 18, 12
+    putchar '*', 0x02
+
+    gotoxy 4, 13
+    putchar '*', 0x02
+
+    gotoxy 5, 13
+    putchar '*', 0x02
+
+    gotoxy 6, 13
+    putchar '*', 0x02
+    gotoxy 7, 13
+    putchar '*', 0x02
+    gotoxy 8, 13
+    putchar '*', 0x02
+
+    gotoxy 9, 13
+    putchar '*', 0x02
+    gotoxy 10, 13
+    putchar '*', 0x02
+
+    gotoxy 11, 13
+    putchar '*', 0x02
+    gotoxy 12, 13
+    putchar '*', 0x02
+    gotoxy 13, 13
+    putchar '*', 0x02
+
+    gotoxy 14, 13
+    putchar '*', 0x02
+    gotoxy 15, 13
+    putchar '*', 0x02
+    gotoxy 16, 13
+    putchar '*', 0x02
+    gotoxy 17, 13
+    putchar '*', 0x02
+    gotoxy 4, 13
+    putchar '*', 0x02
+
+    gotoxy 18, 13
+    putchar '*', 0x02
+
+    gotoxy 4, 14
+    putchar '*', 0x02
+
+    gotoxy 5, 14
+    putchar '*', 0x02
+
+    gotoxy 6, 14
+    putchar '*', 0x02
+    gotoxy 7, 14
+    putchar '*', 0x02
+    gotoxy 8, 14
+    putchar '*', 0x02
+
+    gotoxy 9, 14
+    putchar '*', 0x02
+    gotoxy 10, 14
+    putchar '*', 0x02
+
+    gotoxy 11, 14
+    putchar '*', 0x02
+    gotoxy 12, 14
+    putchar '*', 0x02
+    gotoxy 13, 14
+    putchar '*', 0x02
+
+    gotoxy 14, 14
+    putchar '*', 0x02
+    gotoxy 15, 14
+    putchar '*', 0x02
+    gotoxy 16, 14
+    putchar '*', 0x02
+    gotoxy 17, 14
+    putchar '*', 0x02
+    gotoxy 4, 14
+    putchar '*', 0x02
+
+    gotoxy 18, 14
+    putchar '*', 0x02
+
+    gotoxy 4, 15
+    putchar '*', 0x02
+
+    gotoxy 5, 15
+    putchar '*', 0x02
+
+    gotoxy 6, 15
+    putchar '*', 0x02
+    gotoxy 7, 15
+    putchar '*', 0x02
+    gotoxy 8, 15
+    putchar '*', 0x02
+
+    gotoxy 9, 15
+    putchar '*', 0x02
+    gotoxy 10, 15
+    putchar '*', 0x02
+
+    gotoxy 11, 15
+    putchar '*', 0x02
+    gotoxy 12, 15
+    putchar '*', 0x02
+    gotoxy 13, 15
+    putchar '*', 0x02
+
+    gotoxy 14, 15
+    putchar '*', 0x02
+    gotoxy 15, 15
+    putchar '*', 0x02
+    gotoxy 16, 15
+    putchar '*', 0x02
+    gotoxy 17, 15
+    putchar '*', 0x02
+    gotoxy 4, 15
+    putchar '*', 0x02
+
+    gotoxy 18, 15
+    putchar '*', 0x02
 
     
     
