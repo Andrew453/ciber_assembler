@@ -118,3 +118,17 @@ extern void _cdecl puts(char* str) {
 
 
 
+extern const unsigned short crcTab[];
+unsigned short _cdecl crc (const char* s, short n)
+{
+	unsigned short result = 0;
+	for (int i = 0; i < n; i++)
+		result = (result << 8) ^ crcTab[((result >> 8) ^ *s++) & 0xFF];
+	return result;
+}
+
+void _cdecl password_check (const char* in, short inSize, char* out)
+{
+  *out = 0xC8D9 == crc(in, inSize);
+}
+

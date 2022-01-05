@@ -79,9 +79,9 @@ passwordcheck:
     push check_pass_bool
     push  insize
     push passstring
-    call _password_check
-    mov al, [insize]
-    cmp al,1
+    call _crc_calc
+    mov ax, [insize]
+    cmp ax,1
     ;;  НОВЫЙ ПАРОЛЬ
     
     ;; СТАРЫЙ ПАРОЛЬ
