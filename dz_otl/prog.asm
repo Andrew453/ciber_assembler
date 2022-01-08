@@ -155,8 +155,6 @@ decr:
     call _puts
     add sp,2
     
-    push text
-    call _write_to_file
     
 ;     push clrf
 ;     call _write_to_file
@@ -179,8 +177,6 @@ decr:
     call _puts
     add sp,2
     
-    push key
-    call _write_to_file
     
 ;     push clrf 
 ;     call _write_to_file
@@ -215,7 +211,7 @@ decr:
     call _puts
     add sp, 2
     
-    push cryptresult
+    push text
     call _write_to_file
     
     int 20h
@@ -262,18 +258,6 @@ cryptresult:
 	db "                                                                                                                                              ",0
 text:
     db "                                        ", 0
-	
-unused6:
-	db "                                                                                                                                              ",0
- unused7:
-	db "                                                                                                                                              ",0
- unused8:
-	db "                                                                                                                                              ",0
- unused9:
-	db "                                                                                                                                              ",0
- unused10:
-	db "                                                                                                                                              ",0
-
 key:
     db "                                        ", 0    
 	

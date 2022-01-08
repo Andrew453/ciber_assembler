@@ -250,11 +250,32 @@ pass:
     db "          ", 0
 cryptresult:
     db  "                                        ",0
-    
+  unused1:
+	db "                                                                                                                                              ",0
+ unused2:
+	db "                                                                                                                                              ",0
+ unused3:
+	db "                                                                                                                                              ",0
+ unused4:
+	db "                                                                                                                                              ",0
+ unused5:
+	db "                                                                                                                                              ",0
 text:
     db "                                        ", 0
 key:
     db "                                        ", 0    
+	
+	 unused11:
+	db "                                                                                                                                              ",0
+ unused12:
+	db "                                                                                                                                              ",0
+ unused13:
+	db "                                                                                                                                              ",0
+ unused14:
+	db "                                                                                                                                              ",0
+ unused15:
+	db "                                                                                                                                              ",0
+
 ox:
     db 0
 oy:
