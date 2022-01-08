@@ -117,18 +117,25 @@ extern void _cdecl puts(char* str) {
 }
 
 
-
-extern const unsigned short crcTab[];
-unsigned short _cdecl crc (const char* s, short n)
-{
-	unsigned short result = 0;
-	for (int i = 0; i < n; i++)
-		result = (result << 8) ^ crcTab[((result >> 8) ^ *s++) & 0xFF];
-	return result;
+extern void _cdecl draw_char(unsigned short cc) {
+	char sym;
+	char color;
+	sym = cc & 0x00FF;
+	color = (cc & 0xFF00) >> 8;
+	__asm {
+	   push ax
+	   push bx
+	   push cx
+	   
+	   mov bh, 0
+	   mov al, sym
+	   mov cx, 1
+	   mov bl, color
+	   mov ah, 0x09
+	   int 0x10
+	   
+	   pop cx
+	   pop bx
+	   pop ax
+	}
 }
-
-void _cdecl password_check (const char* in, short inSize, char* out)
-{
-  *out = 0xC8D9 == crc(in, inSize);
-}
-

@@ -8,7 +8,8 @@ extern _puts
 extern _gotoxy
 extern _getxy
 extern _crc_calc
-
+extern  _draw_char
+extern _test_me
 
 global start 
 global _crcTab
@@ -79,9 +80,9 @@ passwordcheck:
     push check_pass_bool
     push  insize
     push passstring
-    call _crc_calc
-    mov ax, [insize]
-    cmp ax,1
+    call _password_check
+    mov al, [insize]
+    cmp al,1
     ;;  НОВЫЙ ПАРОЛЬ
     
     ;; СТАРЫЙ ПАРОЛЬ
@@ -220,7 +221,7 @@ decr:
     int 20h
 
 insize:
-	db 0x0009
+	db 0x0016
 
 check_pass_bool:
     db 0x0000
@@ -235,7 +236,7 @@ errorpass:
     db "Invalid password!",0
     
 passstring;
-    db "          ", 0
+    db "                      ", 0
     
 crypt:
     db "crypt     ", 0
@@ -4680,6 +4681,8 @@ putchar '0', 0x02
     putchar '*', 0x07
     gotoxy 46, 21
     putchar '*', 0x07
+	
+	call _test_me
     ret
 
     

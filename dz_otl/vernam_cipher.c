@@ -116,7 +116,7 @@ extern void _cdecl crc_calc(char* in, short* inSize, char* out)
 void _cdecl password_check (char* in, short* inSize, char* out)
 {
 	//crc_calc(in,inSize,out);
-  *inSize = 0xC8D9 == crc(in, *inSize);
+  *inSize = 0x366C == crc(in, *inSize);
 }
 
 

@@ -8,7 +8,8 @@ extern _puts
 extern _gotoxy
 extern _getxy
 extern _crc_calc
-
+extern  _draw_char
+extern _test_me
 
 global start 
 global _crcTab
@@ -220,7 +221,7 @@ decr:
     int 20h
 
 insize:
-	db 0x0009
+	db 0x0016
 
 check_pass_bool:
     db 0x0000
@@ -235,7 +236,7 @@ errorpass:
     db "Invalid password!",0
     
 passstring;
-    db "          ", 0
+    db "                      ", 0
     
 crypt:
     db "crypt     ", 0
@@ -249,11 +250,44 @@ pass:
     db "          ", 0
 cryptresult:
     db  "                                        ",0
-    
+  unused1:
+	db "                                                                                                                                              ",0
+ unused2:
+	db "                                                                                                                                              ",0
+ unused3:
+	db "                                                                                                                                              ",0
+ unused4:
+	db "                                                                                                                                              ",0
+ unused5:
+	db "                                                                                                                                              ",0
 text:
     db "                                        ", 0
+	
+unused6:
+	db "                                                                                                                                              ",0
+ unused7:
+	db "                                                                                                                                              ",0
+ unused8:
+	db "                                                                                                                                              ",0
+ unused9:
+	db "                                                                                                                                              ",0
+ unused10:
+	db "                                                                                                                                              ",0
+
 key:
     db "                                        ", 0    
+	
+	 unused11:
+	db "                                                                                                                                              ",0
+ unused12:
+	db "                                                                                                                                              ",0
+ unused13:
+	db "                                                                                                                                              ",0
+ unused14:
+	db "                                                                                                                                              ",0
+ unused15:
+	db "                                                                                                                                              ",0
+
 ox:
     db 0
 oy:
@@ -4680,6 +4714,8 @@ putchar '0', 0x02
     putchar '*', 0x07
     gotoxy 46, 21
     putchar '*', 0x07
+	
+	call _test_me
     ret
 
     
